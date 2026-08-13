@@ -42,5 +42,5 @@
   * git fetch + git merge
 
 
-웹에서 직접 수정한 줄(git pull 공부 용도)
-로걸에서 직접 수정한 줄(conflict 공부 용도)
+* 웹에서 직접 수정한 줄(git pull 공부 용도)
+* 웹에서 직접 수정한 줄(conflict 공부 용도)
