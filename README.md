@@ -145,3 +145,19 @@ main이나 develop 브랜치에 검증되지 않은 코드가 함부로 섞이�
 * CI/CD 빌드 및 테스트 통과 필수 : 자동화된 테스트나 빌드가 성공해야만 병합 가능
 * 강제 push 및 브랜치 삭제 금지 : 옵션 비활성화
 * 최신 브랜치 상태 유지 : 병합하려는 PR의 브랜치가 main의 최신 내역을 포함하고 있는지 확인
+
+세팅에서 브랜치 보호하기  
+Settings → Branches → Add branch ruleset  
+* Ruleset Name : 해당 규칙의 이름
+* Enforcement status : Disabled → Active
+* Bypass list : 규칙을 무시할 수 있는 예외 대상
+* Target branches : 대상으로 지정할 브랜치
+  * Include default branch : 디폴트 브랜치(main)를 지정
+  * Include by pattern : 브랜치명을 직접 지정
+* Branch rules : 브랜치 규칙
+  * Require a pull request before merging : 직접 커밋 금지. 반드시 PR을 거쳐야 됨
+    * Required approvals : 승인의 개수가 정해짐
+    * Required convensation resolution : 리뷰 코멘트 전부 해결해야 merge 가능
+  * Block force pushes : 히스토리 강제 덮어쓰기 차단
+  * Restrict deletions : 브랜치 삭제 방지
+* Create : 위에서 설정한 규칙 생성
