@@ -18,6 +18,20 @@
 
 ---
 
+## ⌨️ 실무 흐름
+
+* 이슈 생성 (feature_request)
+  * ↓ git switch -c feature/이슈번호-작업명
+* 작업
+  * ↓ commit → push
+* PR 생성 (템플릿 자동, "Closing Keyword" 작성)
+  * ↓리뷰 → 수정 → Approve
+* Squash and merge
+  * ↓이슈 자동 종료 + 브랜치 삭제
+* git switch main && git pull && git branch -D 브랜치명
+
+---
+
 ## 🛠️ 주요 Git 명령어
 
 * `git clone https://github.com/~/~.git`
