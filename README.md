@@ -96,7 +96,24 @@ main 히스토리가 깔끔해지고, PR과 커밋이 대응되어 나중에 롤
   * 원격은 이미 브랜치가 지워졌으므로, 로컬에서도 브랜치를 삭제한다.
 
 * 사이드바
-  * Reviewers : 코드를 봐줄 상대를 지목한다.(자신은 불가) 지목 시 상대방에게 연락이 간다. 지정된 사람은 리뷰 제출 시 아래 세 가지 중 하나를 고른다.
+  * Reviewers : 작업을 봐줄 상대를 지목한다.(자신은 불가) 지목 시 상대방에게 연락이 간다. 지정된 사람은 리뷰 제출 시 아래 세 가지 중 하나를 고른다.
     * Comment : 의견
     * Approve : 승인
     * Request changes : 수정 요구
+  * Assigness : 작업을 만든 사람(본인), 관리용 표시
+  * Labels :  작업의 분류 태그
+    * bug : 버그 관련(버그 해결 전에는 Open 상태 + bug 라벨, 버그 해결 후에는 Closed 상태 + bug 라벨)
+    * enhancement : 기능 개선
+    * documentation : 문서
+    * good first issue : 초보자용
+    * help wanted : 팀원이나 외부의 도움이나 의견 요청
+    * invalid : 필요 없는 작업 혹은 잘못 올렸을 때를 표시
+    * question : 질문, 검토 요청, 논의
+    * wontfix : 해결하지 않기로 의도적으로 결정한 작업
+    * 커스텀 라벨 : 프로젝트 성격에 따라 팀에서 결정하여 만든 라벨
+  * Projects : 작업 현황을 보여주는 보드
+  * Milestone : 마감 기한이 있는 묶음, 관련된 PR/이슈를 한 덩어리로 묶고 진행률을 보여준다.
+  * development : 이 PR이 어떤 이슈나 작업 항목을 해결하는지 연동하는 영역
+* Closing Keyword : 이슈 번호를 함께 적으면 PR이 병합될 때 이슈를 자동으로 닫아주는 예약어  
+예시: closes #10, fixes #12
+  * fix, fixes, fixed, close, closes, closed, resolve, resolves, resolved (전부 같은 기능)
