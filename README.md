@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 Git 푸시 과정 (Git WorkFlow)
+## ✔️ Git 푸시 과정 (Git WorkFlow)
 
 작업 폴더의 변경 사항이 GitHub 원격 저장소에 반영되는 단계별 흐름입니다.
 
@@ -73,13 +73,39 @@
   * `git branch -D 브랜치명` : 강제 삭제
   * `git branch -a` : 원격 브랜치 및 로컬 브랜치 전부 확인
 
-* 웹에서 직접 수정한 줄(git pull 공부 용도)
-* 웹에서 직접 수정한 줄(conflict 공부 용도)
-* 로컬에서 다른 브랜치에 추가한 줄(브랜치 공부 용도)
+---
+
+## 🔄️ 되돌리기
+
+git에서는 작업의 시점을 구분하여 되돌리는 것을 구분한다.  
+위치는 크게 작업 폴더(로컬), 스테이지, 로컬 저장소(.git), GitHub 으로 구분한다.
+
+* `git restore` : 작업 폴더
+  * 파일을 고쳤는데 없던 일로 하고 싶을 때, 마지막 커밋 상태로 덮어쓴다.
+  * `git add`와 명령어가 비슷하다. (EX : git add . 나 git add README.md)
+* `git restore --staged` : 스테이지
+  * add를 취소하는 명령어로, 스테이지에서만 취소하고 파일 내용은 그대로 둔다.
+* `git commit --amend` : 직전 커밋 수정
+  * 커밋 후 오타나 파일을 빠뜨렸을 때
+  * `git commit --amend -m "수정 메시지"
+  * `git commit --amend --no-edit` : 메시지는 그대로 두고, 파일만 추가해서 다시 커밋한다.(전에 git add로 빠뜨린 파일을 추가한다.)
+* `git reset` : 로컬 저장소
+  * 커밋 되돌리기 (push 전), 옵션 3개로 강도가 갈린다.
+  * `git reset --soft HEAD~1` : 커밋만 풀린다. HEAD~1은 직전 커밋을 의미한다.
+  * `git reset --mixed HEAD~2` : add도 풀린다. 빨간색으로 남는다. HEAD~2는 2개 전 커밋을 의미한다.
+  * `git reset --hard HEAD~3' : 작업 자체가 사라진다. 정말 필요할 때만 사용한다.
+  * HEAD~ 뒤에 붙는 숫자는 고정이 아니라 유동적으로 바뀔 수 있다.
+* `git revert` : GitHub
+  * 기존 커밋을 지우지 않고, 그걸 취소하는 새 커밋을 추가한다.
+  * before	: A ㅡ B ㅡ C
+  * after	: A ㅡ B ㅡ C ㅡ C' (C를 취소)
+* `git reflog`
+  * 날린 줄 알았던 커밋을 찾는 곳 HEAD가 거쳐간 모든 위치가 기록되어 있다.
+  * 기본 90일간 보관되어 복구 가능하다.
 
 ---
 
-## ✔️ Pull Request
+## 🙏 Pull Request
 
 브랜치를 합치는 것을 요청하는 것  
 단순히 합치는 게 목적이 아니라, **다른 사람이 코드를 보게하는 것이 목적**  
@@ -129,7 +155,7 @@ main 히스토리가 깔끔해지고, PR과 커밋이 대응되어 나중에 롤
   * Milestone : 마감 기한이 있는 묶음, 관련된 PR/이슈를 한 덩어리로 묶고 진행률을 보여준다.
   * development : 이 PR이 어떤 이슈나 작업 항목을 해결하는지 연동하는 영역
 * Closing Keyword : 이슈 번호를 함께 적으면 PR이 병합될 때 이슈를 자동으로 닫아주는 예약어  
-예시: closes #10, fixes #12
+EX : closes #10, fixes #12
   * fix, fixes, fixed, close, closes, closed, resolve, resolves, resolved (전부 같은 기능)
 
 ---
@@ -161,3 +187,11 @@ Settings → Branches → Add branch ruleset
   * Block force pushes : 히스토리 강제 덮어쓰기 차단
   * Restrict deletions : 브랜치 삭제 방지
 * Create : 위에서 설정한 규칙 생성
+
+---
+
+## 📚 공부용 문구
+
+* 웹에서 직접 수정한 줄(git pull 공부 용도)
+* 웹에서 직접 수정한 줄(conflict 공부 용도)
+* 로컬에서 다른 브랜치에 추가한 줄(브랜치 공부 용도)
