@@ -172,7 +172,7 @@ git에서는 작업의 시점을 구분하여 되돌리는 것을 구분한다.
 
 ---
 
-## 📃 ISSUE
+## 📃 Issues
 
 해야할 일을 기록하는 곳(버그, 기능 요청, 작업 항목 전부)
 
@@ -234,6 +234,23 @@ main 히스토리가 깔끔해지고, PR과 커밋이 대응되어 나중에 롤
 EX : closes #10, fixes #12
   * fix, fixes, fixed, close, closes, closed, resolve, resolves, resolved (전부 같은 기능)
 
+---
+
+## Actions
+
+저장소에 이벤트가 생기면 자동으로 발생되는 기능
+push → 테스트 → PR Open → 빌드 확인 → main에 merge → 배포(CI/CD)
+.github/workflows/ 폴더에 .yml 파일을 두면 깃헙이 자동으로 지정한 시점(.yml 파일에 사용자가 지정)에 깃헙 서버로 실행
+
+구성 예시
+|파일명|기능|
+|---|---|
+|ci.yml|PR마다 테스트, 린트|
+|deploy.yml|main에 merge 시 배포|
+|codeql.yml|보안 스캔(매주 1회)|
+|stale.yml|오래된 이슈 자동 정리|
+
+같은 파일인데 작업이 여러 개라면 job으로 쪼갠다.
 ---
 
 ## 📚 공부용 문구
