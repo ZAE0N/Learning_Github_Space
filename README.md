@@ -32,6 +32,55 @@
 
 ---
 
+## 브랜치
+
+브랜치는 **코드 작업 공간을 독립적으로 분할**하여 **병렬하게 개발을 진행**할 수 있게 만드는 기능
+
+브랜치는 작업 목적에 따라 다음과 같이 나뉜다.
+
+|브랜치명|목적|
+|---|---|
+|main|배포 가능한 상태의 안정적인 코드 뭉치|
+|develop|다음 배포를 위해 개발중인 코드 뭉치|
+|feature|기능 추가|
+|fix|버그 수정|
+|hotfix|운영중인 main에서 긴급한 수정이 필요할 때|
+|docs|문서|
+|refactor|구조 개선|
+|chore|설정, 빌드 등 잡일|
+
+---
+
+## 🛡️ 브랜치 보호 규칙
+
+main이나 develop 브랜치에 검증되지 않은 코드가 함부로 섞이거나, 실수로 삭제되는 것을 막기 위한 규칙
+
+* 모든 변경 사항은 PR을 통해서만 병합되도록 강제
+* 코드 리뷰 승인 필수
+  * 최소 리뷰 승인 인원 지정
+  * 리뷰 승인 후 코드 추가 수정 시 기존의 승인 무효화 후 재리뷰
+* CI/CD 빌드 및 테스트 통과 필수 : 자동화된 테스트나 빌드가 성공해야만 병합 가능
+* 강제 push 및 브랜치 삭제 금지 : 옵션 비활성화
+* 최신 브랜치 상태 유지 : 병합하려는 PR의 브랜치가 main의 최신 내역을 포함하고 있는지 확인
+
+세팅에서 브랜치 보호하기  
+Settings → Branches → Add branch ruleset  
+* Ruleset Name : 해당 규칙의 이름
+* Enforcement status : Disabled → Active
+* Bypass list : 규칙을 무시할 수 있는 예외 대상
+* Target branches : 대상으로 지정할 브랜치
+  * Include default branch : 디폴트 브랜치(main)를 지정
+  * Include by pattern : 브랜치명을 직접 지정
+* Branch rules : 브랜치 규칙
+  * Require a pull request before merging : 직접 커밋 금지. 반드시 PR을 거쳐야 됨
+    * Required approvals : 승인의 개수가 정해짐
+    * Required convensation resolution : 리뷰 코멘트 전부 해결해야 merge 가능
+  * Block force pushes : 히스토리 강제 덮어쓰기 차단
+  * Restrict deletions : 브랜치 삭제 방지
+* Create : 위에서 설정한 규칙 생성
+
+---
+
 ## 🛠️ 주요 Git 명령어
 
 * `git clone https://github.com/~/~.git`
@@ -123,6 +172,15 @@ git에서는 작업의 시점을 구분하여 되돌리는 것을 구분한다.
 
 ---
 
+## 📃 ISSUE
+
+해야할 일을 기록하는 곳(버그, 기능 요청, 작업 항목 전부)
+
+- 이슈 템플릿에 따라 기록하면 된다.
+- PR과 연결된다.
+
+---
+
 ## 🙏 Pull Request
 
 브랜치를 합치는 것을 요청하는 것  
@@ -175,36 +233,6 @@ main 히스토리가 깔끔해지고, PR과 커밋이 대응되어 나중에 롤
 * Closing Keyword : 이슈 번호를 함께 적으면 PR이 병합될 때 이슈를 자동으로 닫아주는 예약어  
 EX : closes #10, fixes #12
   * fix, fixes, fixed, close, closes, closed, resolve, resolves, resolved (전부 같은 기능)
-
----
-
-## 🛡️ 브랜치 보호 규칙
-
-main이나 develop 브랜치에 검증되지 않은 코드가 함부로 섞이거나, 실수로 삭제되는 것을 막기 위한 규칙
-
-* 모든 변경 사항은 PR을 통해서만 병합되도록 강제
-* 코드 리뷰 승인 필수
-  * 최소 리뷰 승인 인원 지정
-  * 리뷰 승인 후 코드 추가 수정 시 기존의 승인 무효화 후 재리뷰
-* CI/CD 빌드 및 테스트 통과 필수 : 자동화된 테스트나 빌드가 성공해야만 병합 가능
-* 강제 push 및 브랜치 삭제 금지 : 옵션 비활성화
-* 최신 브랜치 상태 유지 : 병합하려는 PR의 브랜치가 main의 최신 내역을 포함하고 있는지 확인
-
-세팅에서 브랜치 보호하기  
-Settings → Branches → Add branch ruleset  
-* Ruleset Name : 해당 규칙의 이름
-* Enforcement status : Disabled → Active
-* Bypass list : 규칙을 무시할 수 있는 예외 대상
-* Target branches : 대상으로 지정할 브랜치
-  * Include default branch : 디폴트 브랜치(main)를 지정
-  * Include by pattern : 브랜치명을 직접 지정
-* Branch rules : 브랜치 규칙
-  * Require a pull request before merging : 직접 커밋 금지. 반드시 PR을 거쳐야 됨
-    * Required approvals : 승인의 개수가 정해짐
-    * Required convensation resolution : 리뷰 코멘트 전부 해결해야 merge 가능
-  * Block force pushes : 히스토리 강제 덮어쓰기 차단
-  * Restrict deletions : 브랜치 삭제 방지
-* Create : 위에서 설정한 규칙 생성
 
 ---
 
